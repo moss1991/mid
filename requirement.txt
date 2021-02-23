@@ -3,3 +3,6 @@ uvicorn
 datetime
 loguru
 requests
+tushare
+pandas
+json
