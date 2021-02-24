@@ -207,9 +207,9 @@ class Tushare(object):
         """
         info = self.pro.stk_rewards(ts_code='000001.SZ')
         return info
-    
+
+    # 获取新股上市列表数据   
     def new_share(self,start_date='20180901', end_date='20181018'):
-        # 获取新股上市列表数据
         """
         获取新股上市列表数据
 
@@ -259,6 +259,221 @@ class Tushare(object):
         """
         info = self.pro.daily(ts_code, start_date=start_date, end_date=end_date)
         return info
+    
+    # 期货合约信息表
+    def fut_basic(self,exchange='DCE', fut_type='1'):
+        '''
+        获取期货合约列表数据
+        名称	类型	必选	描述
+        exchange	str	Y	交易所代码 CFFEX-中金所 DCE-大商所 CZCE-郑商所 SHFE-上期所 INE-上海国际能源交易中心
+        fut_type	str	N	合约类型 (1 普通合约 2主力与连续合约 默认取全部)
+
+        名称	类型	默认显示	描述
+        ts_code	str	Y	合约代码
+        symbol	str	Y	交易标识
+        exchange	str	Y	交易市场
+        name	str	Y	中文简称
+        fut_code	str	Y	合约产品代码
+        multiplier	float	Y	合约乘数
+        trade_unit	str	Y	交易计量单位
+        per_unit	float	Y	交易单位(每手)
+        quote_unit	str	Y	报价单位
+        quote_unit_desc	str	Y	最小报价单位说明
+        d_mode_desc	str	Y	交割方式说明
+        list_date	str	Y	上市日期
+        delist_date	str	Y	最后交易日期
+        d_month	str	Y	交割月份
+        last_ddate	str	Y	最后交割日
+        trade_time_desc	str	N	交易时间说明
+        '''
+        info = self.pro.fut_basic(exchange=exchange, fut_type=fut_type, fields='ts_code,symbol,exchange,name,fut_code,multiplier,trade_unit,per_unit,quote_unit,list_date,d_mode_desc,delist_date,d_month,last_ddate,trade_time_desc')
+        return info
+    
+    # 期货日线行情
+    def fut_daily(self,trade_date=None,ts_code=None,exchange=None,start_date=None,end_date=None):
+        """
+        名称	类型	必选	描述
+        trade_date	str	N	交易日期
+        ts_code	str	N	合约代码
+        exchange	str	N	交易所代码
+        start_date	str	N	开始日期
+        end_date	str	N	结束日期
+
+        名称	类型	默认显示	描述
+        ts_code	str	Y	TS合约代码
+        trade_date	str	Y	交易日期
+        pre_close	float	Y	昨收盘价
+        pre_settle	float	Y	昨结算价
+        open	float	Y	开盘价
+        high	float	Y	最高价
+        low	float	Y	最低价
+        close	float	Y	收盘价
+        settle	float	Y	结算价
+        change1	float	Y	涨跌1 收盘价-昨结算价
+        change2	float	Y	涨跌2 结算价-昨结算价
+        vol	float	Y	成交量(手)
+        amount	float	Y	成交金额(万元)
+        oi	float	Y	持仓量(手)
+        oi_chg	float	Y	持仓量变化
+        delv_settle	float	N	交割结算价
+        """
+        info = self.pro.fut_daily(trade_date=trade_date, ts_code=ts_code, exchange=exchange, start_date=start_date, end_date=end_date, fields='ts_code,trade_date,pre_close,pre_settle,open,high,low,close,settle,change1,change2,vol,amount,oi,oi_chg,delv_settle')
+        return info
+    
+    # 每日成交持仓排名 全是none
+    def fut_holding(self,trade_date=None,symbol=None,start_date=None,end_date=None,exchange=None):
+        """
+        名称	类型	必选	描述
+        trade_date	str	N	交易日期 （trade_date/symbol至少输入一个参数）
+        symbol	str	N	合约或产品代码
+        start_date	str	N	开始日期
+        end_date	str	N	结束日期
+        exchange	str	N	交易所代码
+
+        trade_date	str	Y	交易日期
+        symbol	str	Y	合约代码或类型
+        broker	str	Y	期货公司会员简称
+        vol	int	Y	成交量
+        vol_chg	int	Y	成交量变化
+        long_hld	int	Y	持买仓量
+        long_chg	int	Y	持买仓量变化
+        short_hld	int	Y	持卖仓量
+        short_chg	int	Y	持卖仓量变化
+        exchange	str	N	交易所
+        """
+        info = self.pro.fut_holding(trade_date=trade_date, symbol=symbol,start_date=start_date,end_date=end_date, exchange=exchange)
+        return info
+    
+    # 仓单日报
+    def fut_wsr(self,trade_date=None,symbol=None,start_date=None,end_date=None,exchange=None):
+        """
+        名称	类型	必选	描述
+        trade_date	str	N	交易日期
+        symbol	str	N	产品代码
+        start_date	str	N	开始日期
+        end_date	str	N	结束日期
+        exchange	str	N	交易所代码
+
+        名称	类型	默认显示	描述
+        trade_date	str	Y	交易日期
+        symbol	str	Y	产品代码
+        fut_name	str	Y	产品名称
+        warehouse	str	Y	仓库名称
+        wh_id	str	N	仓库编号
+        pre_vol	int	Y	昨日仓单量
+        vol	int	Y	今日仓单量
+        vol_chg	int	Y	增减量
+        area	str	N	地区
+        year	str	N	年度
+        grade	str	N	等级
+        brand	str	N	品牌
+        place	str	N	产地
+        pd	int	N	升贴水
+        is_ct	str	N	是否折算仓单
+        unit	str	Y	单位
+        exchange	str	N	交易所
+        """
+        info = self.pro.fut_wsr(trade_date=trade_date, symbol=symbol,start_date=start_date,end_date=end_date,exchange=exchange)
+        return info 
+
+    # 结算参数
+    def fut_settle(self,trade_date=None,ts_code=None,start_date=None,end_date=None,exchange=None):
+        """
+        trade_date	str	N	交易日期 （trade_date/ts_code至少需要输入一个参数）
+        ts_code	str	N	合约代码
+        start_date	str	N	开始日期
+        end_date	str	N	结束日期
+        exchange	str	N	交易所代码
+
+        名称	类型	默认显示	描述
+        ts_code	str	Y	合约代码
+        trade_date	str	Y	交易日期
+        settle	float	Y	结算价
+        trading_fee_rate	float	Y	交易手续费率
+        trading_fee	float	Y	交易手续费
+        delivery_fee	float	Y	交割手续费
+        b_hedging_margin_rate	float	Y	买套保交易保证金率
+        s_hedging_margin_rate	float	Y	卖套保交易保证金率
+        long_margin_rate	float	Y	买投机交易保证金率
+        short_margin_rate	float	Y	卖投机交易保证金率
+        offset_today_fee	float	N	平今仓手续率
+        exchange	str	N	交易所
+        """
+        info = self.pro.fut_settle(trade_date=trade_date, ts_code=ts_code, start_date=start_date, end_date=end_date, exchange=exchange)
+        return info
+
+    # 南华期货指数日线行情
+    def index_daily(self,ts_code=None,trade_date=None,start_date=None,end_date=None):
+        """
+        名称	类型	必选	描述
+        ts_code	str	N	指数代码（南华期货指数以 .NH 结尾，具体请参考本文最下方）
+        trade_date	str	N	交易日期 （日期格式：YYYYMMDD，下同）
+        start_date	str	N	开始日期
+        end_date	None	N	结束日期
+
+        名称	类型	描述
+        ts_code	str	TS指数代码
+        trade_date	str	交易日
+        close	float	收盘点位
+        open	float	开盘点位
+        high	float	最高点位
+        low	float	最低点位
+        pre_close	float	昨日收盘点
+        change	float	涨跌点
+        pct_chg	float	涨跌幅
+        vol	float	成交量（手）
+        amount	float	成交额（千元）
+        """
+        info = self.pro.index_daily(ts_code=ts_code, trade_date=trade_date, start_date=start_date, end_date=end_date)
+        return info
+    
+    # 期货主力与连续合约
+    def fut_mapping(self,ts_code=None,trade_date=None,start_date=None,end_date=None):
+        """
+        ts_code	str	N	合约代码
+        trade_date	str	N	交易日期
+        start_date	str	N	开始日期
+        end_date	str	N	结束日期
+
+        ts_code	str	Y	连续合约代码
+        trade_date	str	Y	起始日期
+        mapping_ts_code	str	Y	期货合约代码
+        """
+        info = self.pro.fut_mapping(ts_code=ts_code,trade_date=trade_date,start_date=start_date,end_date=end_date)
+        return info
+    
+    # 期货主要品种交易周报
+    def fut_weekly_detail(self,week=None,prd=None,start_week=None,end_week=None,exchange=None):
+        """
+        名称	类型	必选	描述
+        week	str	N	周期（每年第几周，e.g. 202001 表示2020第1周）
+        prd	str	N	期货品种（支持多品种输入，逗号分隔）
+        start_week	str	N	开始周期
+        end_week	str	N	结束周期
+        exchange	str	N	交易所（请参考交易所说明）
+        fields	str	N	提取的字段，e.g. fields='prd,name,vol'
+
+        名称	类型	默认显示	描述
+        exchange	str	Y	交易所代码
+        prd	str	Y	期货品种代码
+        name	str	Y	品种名称
+        vol	int	Y	成交量（手）
+        vol_yoy	float	Y	同比增减（%）
+        amount	float	Y	成交金额（亿元）
+        amout_yoy	float	Y	同比增减（%）
+        cumvol	int	Y	年累计成交总量（手）
+        cumvol_yoy	float	Y	同比增减（%）
+        cumamt	float	Y	年累计成交金额（亿元）
+        cumamt_yoy	float	Y	同比增减（%）
+        open_interest	int	Y	持仓量（手）
+        interest_wow	float	Y	环比增减（%）
+        mc_close	float	Y	本周主力合约收盘价
+        close_wow	float	Y	环比涨跌（%）
+        week	str	Y	周期
+        week_date	str	Y	周日期
+        """
+        info = self.pro.fut_weekly_detail(week=week,prd=prd,start_week=start_week,end_week=end_week,exchange=exchange,fields='exchange,prd,name,vol,vol_yoy,amount,amout_yoy,cumvol,cumvol_yoy,cumamt,cumamt_yoy,open_interest,interest_wow,mc_close,close_wow,week,week_date')
+        return info
 
 tushare = Tushare('4c694540458ed9aeb5d832523255cb51f8c478ce5ccd06ba6e69b587')
 # tushare1 = Tushare('4c694540458ed9aeb5d832523255cb51f8c478ce5ccd06ba6e69b587')
@@ -272,3 +487,19 @@ tushare = Tushare('4c694540458ed9aeb5d832523255cb51f8c478ce5ccd06ba6e69b587')
 # print(tushare.stock_company())
 # print(tushare.new_share())
 # print(tushare.daily())
+# print(tushare.fut_basic())
+# print(tushare.fut_daily(ts_code='JD1907.DCE', start_date='20180101', end_date='20201231'))
+# print(tushare.fut_daily(exchange="DCE", start_date='20180101', end_date='20201231'))
+# print(tushare.fut_daily(start_date='20180101', end_date='20201231'))
+# print(tushare.fut_holding(symbol='C'))
+# print(tushare.fut_holding(trade_date='20181113', symbol='ZN'))
+# print(tushare.fut_settle(trade_date='20181114', exchange='SHFE'))
+# print(
+#     tushare.index_daily(ts_code='CU.NH', start_date='20180101', end_date='20181201')
+# )
+# print(
+#     tushare.fut_mapping(ts_code='TF.CFX')
+# )
+# print(
+#     tushare.fut_weekly_detail(prd='CU', start_week='202001', end_week='202003')
+# )

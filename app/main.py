@@ -8,7 +8,7 @@ sys.path.insert(0,base_dir)
 # fastapi
 import uvicorn
 from fastapi import FastAPI
-from app.routers import webinfo,stockinfo
+from app.routers import webinfo,stockinfo,futuresinfo
 from fastapi.middleware.cors import CORSMiddleware 
 
 def create_app():
@@ -47,6 +47,14 @@ app.include_router(
     stockinfo.router,
     prefix="/stockinfo",
     tags=["stockinfo"],
+    # dependencies=[Depends(corpauth.get_token_header)],
+    responses={404: {"description": "Not found"}},
+)
+
+app.include_router(
+    futuresinfo.router,
+    prefix="/futuresinfo",
+    tags=["futuresinfo"],
     # dependencies=[Depends(corpauth.get_token_header)],
     responses={404: {"description": "Not found"}},
 )
