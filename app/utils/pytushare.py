@@ -320,7 +320,7 @@ class Tushare(object):
         info = self.pro.fut_daily(trade_date=trade_date, ts_code=ts_code, exchange=exchange, start_date=start_date, end_date=end_date, fields='ts_code,trade_date,pre_close,pre_settle,open,high,low,close,settle,change1,change2,vol,amount,oi,oi_chg,delv_settle')
         return info
     
-    # 每日成交持仓排名 全是none
+    # 每日成交持仓排名
     def fut_holding(self,trade_date=None,symbol=None,start_date=None,end_date=None,exchange=None):
         """
         名称	类型	必选	描述
