@@ -1,22 +1,22 @@
 import tushare as ts
 from datetime import datetime
 # from app.config import config
-from app.utils.pydecorators import * 
+# from app.utils.pydecorators import * 
 
 
-# def singleton(cls):
-#     # 单下划线的作用是这个变量只能在当前模块里访问,仅仅是一种提示作用
-#     # 创建一个字典用来保存类的实例对象
-#     _instance = {}
+def singleton(cls):
+    # 单下划线的作用是这个变量只能在当前模块里访问,仅仅是一种提示作用
+    # 创建一个字典用来保存类的实例对象
+    _instance = {}
 
-#     def _singleton(*args, **kwargs):
-#         # 先判断这个类有没有对象
-#         if cls not in _instance:
-#             _instance[cls] = cls(*args, **kwargs)  # 创建一个对象,并保存到字典当中
-#         # 将实例对象返回
-#         return _instance[cls]
+    def _singleton(*args, **kwargs):
+        # 先判断这个类有没有对象
+        if cls not in _instance:
+            _instance[cls] = cls(*args, **kwargs)  # 创建一个对象,并保存到字典当中
+        # 将实例对象返回
+        return _instance[cls]
 
-#     return _singleton
+    return _singleton
 
 # def tushare_maker():
 #     token = config['tushare']['token']
@@ -475,6 +475,201 @@ class Tushare(object):
         """
         info = self.pro.fut_weekly_detail(week=week,prd=prd,start_week=start_week,end_week=end_week,exchange=exchange,fields='exchange,prd,name,vol,vol_yoy,amount,amout_yoy,cumvol,cumvol_yoy,cumamt,cumamt_yoy,open_interest,interest_wow,mc_close,close_wow,week,week_date')
         return info
+    
+    def fx_obasic(self,exchange=None,classify=None,ts_code=None):
+        """
+        名称	类型	必选	描述
+        exchange	str	N	交易商
+        classify	str	N	分类
+        ts_code	str	N	TS代码
+
+        序号	分类代码	分类名称	样例
+        1	FX	外汇货币对	USDCNH（美元人民币对）
+        2	INDEX	指数	US30（美国道琼斯工业平均指数）
+        3	COMMODITY	大宗商品	SOYF（大豆）
+        4	METAL	金属	XAUUSD （黄金）
+        5	BUND	国库债券	Bund（长期欧元债券）
+        6	CRYPTO	加密数字货币	BTCUSD (比特币)
+        7	FX_BASKET	外汇篮子	USDOLLAR （美元指数）
+
+        名称	类型	默认显示	描述
+        ts_code	str	Y	外汇代码
+        name	str	Y	名称
+        classify	str	Y	分类
+        exchange	str	Y	交易商
+        min_unit	float	Y	最小交易单位
+        max_unit	float	Y	最大交易单位
+        pip	float	Y	最大交易单位
+        pip_cost	float	Y	点值
+        traget_spread	float	Y	目标差价
+        min_stop_distance	float	Y	最小止损距离（点子）
+        trading_hours	str	Y	交易时间
+        break_time	str	Y	休市时间
+        """
+        info = self.pro.fx_obasic(exchange=exchange, classify=classify,ts_code=ts_code)
+        return info
+    
+    def fx_daily(self,ts_code=None, start_date=None, end_date=None):
+        """
+        名称	类型	必选	描述
+        ts_code	str	N	TS代码
+        trade_date	str	N	交易日期（GMT，日期是格林尼治时间，比北京时间晚一天）
+        start_date	str	N	开始日期（GMT）
+        end_date	str	N	结束日期（GMT）
+        exchange	str	N	交易商，目前只有FXCM
+
+        名称	类型	默认显示	描述
+        ts_code	str	Y	外汇代码
+        trade_date	str	Y	交易日期
+        bid_open	float	Y	买入开盘价
+        bid_close	float	Y	买入收盘价
+        bid_high	float	Y	买入最高价
+        bid_low	float	Y	买入最低价
+        ask_open	float	Y	卖出开盘价
+        ask_close	float	Y	卖出收盘价
+        ask_high	float	Y	卖出最高价
+        ask_low	float	Y	卖出最低价
+        tick_qty	int	Y	报价笔数
+        exchange	str	N	交易商
+        """
+        info = self.pro.fx_daily(ts_code=ts_code, start_date=start_date, end_date=end_date)
+        return info
+    
+    # GDP
+    def cn_gdp(self,q=None,start_q=None,end_q=None):
+        """
+        名称	类型	必选	描述
+        q	str	N	季度（2019Q1表示，2019年第一季度）
+        start_q	str	N	开始季度
+        end_q	str	N	结束季度
+        fields	str	N	指定输出字段（e.g. fields='quarter,gdp,gdp_yoy'）
+
+        名称	类型	默认显示	描述
+        quarter	str	Y	季度
+        gdp	float	Y	GDP累计值（亿元）
+        gdp_yoy	float	Y	当季同比增速（%）
+        pi	float	Y	第一产业累计值（亿元）
+        pi_yoy	float	Y	第一产业同比增速（%）
+        si	float	Y	第二产业累计值（亿元）
+        si_yoy	float	Y	第二产业同比增速（%）
+        ti	float	Y	第三产业累计值（亿元）
+        ti_yoy	float	Y	第三产业同比增速（%）
+        """
+        info = self.pro.cn_gdp(q=q,start_q=start_q,end_q=end_q)
+        return info
+    
+    def cn_cpi(self,m=None,start_m=None,end_m=None):
+        """
+        名称	类型	必选	描述
+        m	str	N	月份（YYYYMM，下同），支持多个月份同时输入，逗号分隔
+        start_m	str	N	开始月份
+        end_m	str	N	结束月份
+
+        名称	类型	默认显示	描述
+        month	str	Y	月份YYYYMM
+        nt_val	float	Y	全国当月至
+        nt_yoy	float	Y	全国同比（%）
+        nt_mom	float	Y	全国环比（%）
+        nt_accu	float	Y	全国累计值
+        town_val	float	Y	城市当值月
+        town_yoy	float	Y	城市同比（%）
+        town_mom	float	Y	城市环比（%）
+        town_accu	float	Y	城市累计值
+        cnt_val	float	Y	农村当月值
+        cnt_yoy	float	Y	农村同比（%）
+        cnt_mom	float	Y	农村环比（%）
+        cnt_accu	float	Y	农村累计值
+        """
+        info = self.pro.cn_cpi(m=m,start_m=start_m, end_m=end_m)
+        return info
+    
+    def cn_ppi(self,start_m=None, end_m=None):
+        """
+        名称	类型	必选	描述
+        m	str	N	月份（YYYYMM，下同），支持多个月份同时输入，逗号分隔
+        start_m	str	N	开始月份
+        end_m	str	N	结束月份
+
+        名称	类型	默认显示	描述
+        month	str	Y	月份YYYYMM
+        ppi_yoy	float	Y	PPI：全部工业品：当月同比
+        ppi_mp_yoy	float	Y	PPI：生产资料：当月同比
+        ppi_mp_qm_yoy	float	Y	PPI：生产资料：采掘业：当月同比
+        ppi_mp_rm_yoy	float	Y	PPI：生产资料：原料业：当月同比
+        ppi_mp_p_yoy	float	Y	PPI：生产资料：加工业：当月同比
+        ppi_cg_yoy	float	Y	PPI：生活资料：当月同比
+        ppi_cg_f_yoy	float	Y	PPI：生活资料：食品类：当月同比
+        ppi_cg_c_yoy	float	Y	PPI：生活资料：衣着类：当月同比
+        ppi_cg_adu_yoy	float	Y	PPI：生活资料：一般日用品类：当月同比
+        ppi_cg_dcg_yoy	float	Y	PPI：生活资料：耐用消费品类：当月同比
+        ppi_mom	float	Y	PPI：全部工业品：环比
+        ppi_mp_mom	float	Y	PPI：生产资料：环比
+        ppi_mp_qm_mom	float	Y	PPI：生产资料：采掘业：环比
+        ppi_mp_rm_mom	float	Y	PPI：生产资料：原料业：环比
+        ppi_mp_p_mom	float	Y	PPI：生产资料：加工业：环比
+        ppi_cg_mom	float	Y	PPI：生活资料：环比
+        ppi_cg_f_mom	float	Y	PPI：生活资料：食品类：环比
+        ppi_cg_c_mom	float	Y	PPI：生活资料：衣着类：环比
+        ppi_cg_adu_mom	float	Y	PPI：生活资料：一般日用品类：环比
+        ppi_cg_dcg_mom	float	Y	PPI：生活资料：耐用消费品类：环比
+        ppi_accu	float	Y	PPI：全部工业品：累计同比
+        ppi_mp_accu	float	Y	PPI：生产资料：累计同比
+        ppi_mp_qm_accu	float	Y	PPI：生产资料：采掘业：累计同比
+        ppi_mp_rm_accu	float	Y	PPI：生产资料：原料业：累计同比
+        ppi_mp_p_accu	float	Y	PPI：生产资料：加工业：累计同比
+        ppi_cg_accu	float	Y	PPI：生活资料：累计同比
+        ppi_cg_f_accu	float	Y	PPI：生活资料：食品类：累计同比
+        ppi_cg_c_accu	float	Y	PPI：生活资料：衣着类：累计同比
+        ppi_cg_adu_accu	float	Y	PPI：生活资料：一般日用品类：累计同比
+        ppi_cg_dcg_accu	float	Y	PPI：生活资料：耐用消费品类：累计同比
+
+        """
+        info = self.pro.cn_ppi(start_m=start_m, end_m=end_m)
+        return info
+    
+    def cn_m(self,m=None,start_m=None,end_m=None):
+        """
+        
+        m	str	N	月度（202001表示，2020年1月）
+        start_m	str	N	开始月度
+        end_m	str	N	结束月度
+        fields	str	N	指定输出字段（e.g. fields='month,m0,m1,m2'）
+
+        名称	类型	默认显示	描述
+        month	str	Y	月份YYYYMM
+        m0	float	Y	M0（亿元）
+        m0_yoy	float	Y	M0同比（%）
+        m0_mom	float	Y	M0环比（%）
+        m1	float	Y	M1（亿元）
+        m1_yoy	float	Y	M1同比（%）
+        m1_mom	float	Y	M1环比（%）
+        m2	float	Y	M2（亿元）
+        m2_yoy	float	Y	M2同比（%）
+        m2_mom	float	Y	M2环比（%）
+        """
+        info = self.pro.cn_m(m=m,start_m=start_m, end_m=end_m)
+        return info
+    
+    def shibor(self,date=None,start_date=None, end_date=None):
+        """
+        名称	类型	必选	描述
+        date	str	N	日期 (日期输入格式：YYYYMMDD，下同)
+        start_date	str	N	开始日期
+        end_date	str	N	结束日期
+
+        名称	类型	默认显示	描述
+        date	str	Y	日期
+        on	float	Y	隔夜
+        1w	float	Y	1周
+        2w	float	Y	2周
+        1m	float	Y	1个月
+        3m	float	Y	3个月
+        6m	float	Y	6个月
+        9m	float	Y	9个月
+        1y	float	Y	1年
+        """
+        info = self.pro.shibor(date=date,start_date=start_date, end_date=end_date)
+        return info
 
 tushare = Tushare('4c694540458ed9aeb5d832523255cb51f8c478ce5ccd06ba6e69b587')
 # tushare1 = Tushare('4c694540458ed9aeb5d832523255cb51f8c478ce5ccd06ba6e69b587')
@@ -504,3 +699,18 @@ tushare = Tushare('4c694540458ed9aeb5d832523255cb51f8c478ce5ccd06ba6e69b587')
 # print(
 #     tushare.fut_weekly_detail(prd='CU', start_week='202001', end_week='202003')
 # )
+# print(
+#     tushare.fx_obasic(exchange='FXCM', classify='INDEX')
+# )
+# print(
+#     tushare.fx_daily(ts_code='USDCNH.FXCM', start_date='20190101', end_date='20190524')
+# )
+# print(
+#     tushare.cn_gdp(start_q='2020Q1', end_q='2020Q4')
+# )
+# print(
+#     tushare.cn_cpi(start_m='201801', end_m='201903')
+# )
+print(
+    tushare.cn_m(start_m='201901', end_m='202003')
+)
