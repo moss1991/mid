@@ -34,7 +34,7 @@ async def get_cn_cpi(m=None,start_m=None,end_m=None):
 @router.get('/ppi')
 async def get_cn_ppi(m=None,start_m=None,end_m=None):
     logger.info('call once')
-    _ppi_data = tushare.cn_cpi(m=m,start_m=start_m,end_m=end_m)
+    _ppi_data = tushare.cn_ppi(m=m,start_m=start_m,end_m=end_m)
     _list = formate_pandas(_ppi_data)
     return formate_response(200,_list,'ok')
 
@@ -42,6 +42,6 @@ async def get_cn_ppi(m=None,start_m=None,end_m=None):
 @router.get('/money')
 async def get_m(m=None,start_m=None,end_m=None):
     logger.info('call once')
-    _ppi_data = tushare.cn_cpi(m=m,start_m=start_m,end_m=end_m)
+    _ppi_data = tushare.cn_m(m=m,start_m=start_m,end_m=end_m)
     _list = formate_pandas(_ppi_data)
     return formate_response(200,_list,'ok')

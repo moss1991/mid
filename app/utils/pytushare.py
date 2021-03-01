@@ -583,7 +583,7 @@ class Tushare(object):
         info = self.pro.cn_cpi(m=m,start_m=start_m, end_m=end_m)
         return info
     
-    def cn_ppi(self,start_m=None, end_m=None):
+    def cn_ppi(self,m=None,start_m=None, end_m=None):
         """
         名称	类型	必选	描述
         m	str	N	月份（YYYYMM，下同），支持多个月份同时输入，逗号分隔
@@ -602,21 +602,25 @@ class Tushare(object):
         ppi_cg_c_yoy	float	Y	PPI：生活资料：衣着类：当月同比
         ppi_cg_adu_yoy	float	Y	PPI：生活资料：一般日用品类：当月同比
         ppi_cg_dcg_yoy	float	Y	PPI：生活资料：耐用消费品类：当月同比
+        
         ppi_mom	float	Y	PPI：全部工业品：环比
         ppi_mp_mom	float	Y	PPI：生产资料：环比
         ppi_mp_qm_mom	float	Y	PPI：生产资料：采掘业：环比
         ppi_mp_rm_mom	float	Y	PPI：生产资料：原料业：环比
         ppi_mp_p_mom	float	Y	PPI：生产资料：加工业：环比
+        
         ppi_cg_mom	float	Y	PPI：生活资料：环比
         ppi_cg_f_mom	float	Y	PPI：生活资料：食品类：环比
         ppi_cg_c_mom	float	Y	PPI：生活资料：衣着类：环比
         ppi_cg_adu_mom	float	Y	PPI：生活资料：一般日用品类：环比
         ppi_cg_dcg_mom	float	Y	PPI：生活资料：耐用消费品类：环比
+        
         ppi_accu	float	Y	PPI：全部工业品：累计同比
         ppi_mp_accu	float	Y	PPI：生产资料：累计同比
         ppi_mp_qm_accu	float	Y	PPI：生产资料：采掘业：累计同比
         ppi_mp_rm_accu	float	Y	PPI：生产资料：原料业：累计同比
         ppi_mp_p_accu	float	Y	PPI：生产资料：加工业：累计同比
+        
         ppi_cg_accu	float	Y	PPI：生活资料：累计同比
         ppi_cg_f_accu	float	Y	PPI：生活资料：食品类：累计同比
         ppi_cg_c_accu	float	Y	PPI：生活资料：衣着类：累计同比
@@ -624,7 +628,7 @@ class Tushare(object):
         ppi_cg_dcg_accu	float	Y	PPI：生活资料：耐用消费品类：累计同比
 
         """
-        info = self.pro.cn_ppi(start_m=start_m, end_m=end_m)
+        info = self.pro.cn_ppi(m=m,start_m=start_m, end_m=end_m)
         return info
     
     def cn_m(self,m=None,start_m=None,end_m=None):
@@ -712,5 +716,8 @@ tushare = Tushare('4c694540458ed9aeb5d832523255cb51f8c478ce5ccd06ba6e69b587')
 #     tushare.cn_cpi(start_m='201801', end_m='201903')
 # )
 print(
-    tushare.cn_m(start_m='201901', end_m='202003')
+    tushare.cn_ppi(start_m='201905', end_m='202005')
 )
+# print(
+#     tushare.cn_m(start_m='201901', end_m='202003')
+# )
