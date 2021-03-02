@@ -8,7 +8,7 @@ sys.path.insert(0,base_dir)
 # fastapi
 import uvicorn
 from fastapi import FastAPI
-from app.routers import webinfo,stockinfo,futuresinfo,haiguaninfo,cninfo
+from app.routers import web,stock,futures,haiguan,econ
 from fastapi.middleware.cors import CORSMiddleware 
 
 def create_app():
@@ -36,41 +36,41 @@ app.add_middleware(
 )
 
 app.include_router(
-    webinfo.router,
-    prefix="/webinfo",
-    tags=["webinfo"],
+    web.router,
+    prefix="/web",
+    tags=["web"],
     # dependencies=[Depends(corpauth.get_token_header)],
     responses={404: {"description": "Not found"}},
 )
 
 app.include_router(
-    stockinfo.router,
-    prefix="/stockinfo",
-    tags=["stockinfo"],
+    stock.router,
+    prefix="/stock",
+    tags=["stock"],
     # dependencies=[Depends(corpauth.get_token_header)],
     responses={404: {"description": "Not found"}},
 )
 
 app.include_router(
-    futuresinfo.router,
-    prefix="/futuresinfo",
-    tags=["futuresinfo"],
+    futures.router,
+    prefix="/futures",
+    tags=["futures"],
     # dependencies=[Depends(corpauth.get_token_header)],
     responses={404: {"description": "Not found"}},
 )
 
 app.include_router(
-    haiguaninfo.router,
-    prefix="/haiguaninfo",
-    tags=["haiguaninfo"],
+    haiguan.router,
+    prefix="/haiguan",
+    tags=["haiguan"],
     # dependencies=[Depends(corpauth.get_token_header)],
     responses={404: {"description": "Not found"}},
 )
 
 app.include_router(
-    cninfo.router,
-    prefix="/cninfo",
-    tags=["cninfo"],
+    econ.router,
+    prefix="/econ",
+    tags=["econ"],
     # dependencies=[Depends(corpauth.get_token_header)],
     responses={404: {"description": "Not found"}},
 )
