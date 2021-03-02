@@ -45,3 +45,19 @@ async def get_m(m=None,start_m=None,end_m=None):
     _ppi_data = tushare.cn_m(m=m,start_m=start_m,end_m=end_m)
     _list = formate_pandas(_ppi_data)
     return formate_response(200,_list,'ok')
+
+@logger.catch
+@router.get('/tbr')
+async def get_us_tbr(date=None,start_date=None,end_date=None):
+    logger.info('call once')
+    _ppi_data = tushare.us_tbr(date=date,start_date=start_date,end_date=end_date)
+    _list = formate_pandas(_ppi_data)
+    return formate_response(200,_list,'ok')
+
+@logger.catch
+@router.get('/tltr')
+async def get_us_tltr(date=None,start_date=None,end_date=None):
+    logger.info('call once')
+    _ppi_data = tushare.us_tltr(date=date,start_date=start_date,end_date=end_date)
+    _list = formate_pandas(_ppi_data)
+    return formate_response(200,_list,'ok')

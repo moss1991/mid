@@ -674,6 +674,49 @@ class Tushare(object):
         """
         info = self.pro.shibor(date=date,start_date=start_date, end_date=end_date)
         return info
+    
+    # 短期国债利率
+    def us_tbr(self,date=None,start_date=None,end_date=None):
+        """
+        名称	类型	必选	描述
+        date	str	N	日期
+        start_date	str	N	开始日期(YYYYMMDD格式)
+        end_date	str	N	结束日期
+
+        名称	类型	默认显示	描述
+        date	str	Y	日期
+        w4_bd	float	Y	4周银行折现收益率
+        w4_ce	float	Y	4周票面利率
+        w8_bd	float	Y	8周银行折现收益率
+        w8_ce	float	Y	8周票面利率
+        w13_bd	float	Y	13周银行折现收益率
+        w13_ce	float	Y	13周票面利率
+        w26_bd	float	Y	26周银行折现收益率
+        w26_ce	float	Y	26周票面利率
+        w52_bd	float	Y	52周银行折现收益率
+        w52_ce	float	Y	52周票面利率
+        """
+        info = self.pro.us_tbr(date=date,start_date=start_date,end_date=end_date)
+        return info
+    
+    # 国债长期利率
+    def us_tltr(self,date=None,start_date=None,end_date=None):
+        """
+        名称	类型	必选	描述
+        date	str	N	日期
+        start_date	str	N	开始日期
+        end_date	str	N	结束日期
+        fields	str	N	指定字段
+
+        名称	类型	默认显示	描述
+        date	str	Y	日期
+        ltc	float	Y	收益率 LT COMPOSITE (>10 Yrs)
+        cmt	float	Y	20年期CMT利率(TREASURY 20-Yr CMT)
+        e_factor	float	Y	外推因子EXTRAPOLATION FACTOR
+        """
+        info = self.pro.us_tltr(date=date,start_date=start_date,end_date=end_date)
+        return info
+
 
 tushare = Tushare('4c694540458ed9aeb5d832523255cb51f8c478ce5ccd06ba6e69b587')
 # tushare1 = Tushare('4c694540458ed9aeb5d832523255cb51f8c478ce5ccd06ba6e69b587')
@@ -715,9 +758,15 @@ tushare = Tushare('4c694540458ed9aeb5d832523255cb51f8c478ce5ccd06ba6e69b587')
 # print(
 #     tushare.cn_cpi(start_m='201801', end_m='201903')
 # )
-print(
-    tushare.cn_ppi(start_m='201905', end_m='202005')
-)
+# print(
+#     tushare.cn_ppi(start_m='201905', end_m='202005')
+# )
 # print(
 #     tushare.cn_m(start_m='201901', end_m='202003')
 # )
+# print(
+#     tushare.us_tbr(start_date='20180101', end_date='20200327')
+# )
+print(
+    tushare.us_tltr(start_date='20180101', end_date='20200327')
+)
