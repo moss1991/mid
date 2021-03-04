@@ -11,6 +11,8 @@ from fastapi import FastAPI
 from app.routers import web,stock,futures,haiguan,econ
 from fastapi.middleware.cors import CORSMiddleware 
 
+# models.Base.metadata.create_all(bind=engine)
+
 def create_app():
     app	= FastAPI()
     return app

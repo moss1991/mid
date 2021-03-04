@@ -767,6 +767,6 @@ tushare = Tushare('4c694540458ed9aeb5d832523255cb51f8c478ce5ccd06ba6e69b587')
 # print(
 #     tushare.us_tbr(start_date='20180101', end_date='20200327')
 # )
-print(
-    tushare.us_tltr(start_date='20180101', end_date='20200327')
-)
+# print(
+#     tushare.us_tltr(start_date='20180101', end_date='20200327')
+# )

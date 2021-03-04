@@ -7,3 +7,6 @@ tushare
 pandas
 xlrd
 openpyxl
+sqlalchemy
+pydantic
+mysql-connector-python
