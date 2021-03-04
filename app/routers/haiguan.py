@@ -27,6 +27,15 @@ def get_haiguan(db: Session = Depends(get_db)):
 	logger.info(r)
 	return formate_response(r[0],r[1],r[2])
 
+@router.get("/limit")
+@logger.catch
+def get_haiguans(db: Session = Depends(get_db), page:int = 1, pagesize:int = 50):
+    skip = page*pagesize
+    limit = pagesize
+    r = crud.limit_haiguan(db,skip,limit)
+    logger.info(r)
+    return formate_response(r[0],r[1],r[2])
+
 
 # def initPandas():
 #     _file_path = tool.get_pwd(__file__)

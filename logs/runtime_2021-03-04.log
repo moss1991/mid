@@ -172,3 +172,330 @@ Traceback (most recent call last):
 
 TypeError: Object of type AttributeError is not JSON serializable
 2021-03-04 at 15:14:57 | INFO | (200, {'id': 574387, 'product_id': '01012100', 'product_name': '无数据', 'trade_country_id': 0, 'trade_country_name': '无数据', 'trade_id': 0, 'trade_name': '无数据', 'register_id': 0, 'register_name': '无数据', 'first_unit': '无数据', 'first_price': 0, 'second_unit': '无数据', 'second_price': 0, 'price': 0, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, '')
+2021-03-04 at 15:36:06 | ERROR | An error has been caught in function 'run', process 'MainProcess' (13601), thread 'ThreadPoolExecutor-0_0' (123145346875392):
+Traceback (most recent call last):
+
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/threading.py", line 890, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x10678b1f0>
+    └ <Thread(ThreadPoolExecutor-0_0, started daemon 123145346875392)>
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+    │    └ <function Thread.run at 0x106788ee0>
+    └ <Thread(ThreadPoolExecutor-0_0, started daemon 123145346875392)>
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {}
+    │    │        │    │        └ <Thread(ThreadPoolExecutor-0_0, started daemon 123145346875392)>
+    │    │        │    └ (<weakref at 0x114ba1860; to 'ThreadPoolExecutor' at 0x114b8ca30>, <_queue.SimpleQueue object at 0x114c33c20>, None, ())
+    │    │        └ <Thread(ThreadPoolExecutor-0_0, started daemon 123145346875392)>
+    │    └ <function _worker at 0x114b79f70>
+    └ <Thread(ThreadPoolExecutor-0_0, started daemon 123145346875392)>
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/concurrent/futures/thread.py", line 80, in _worker
+    work_item.run()
+    │         └ <function _WorkItem.run at 0x114b9c0d0>
+    └ <concurrent.futures.thread._WorkItem object at 0x114b9f1f0>
+> File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+             │    │   │    │       │    └ {}
+             │    │   │    │       └ <concurrent.futures.thread._WorkItem object at 0x114b9f1f0>
+             │    │   │    └ [functools.partial(<function get_haiguans at 0x114ab3430>, db=<sqlalchemy.orm.session.Session object at 0x114b9f490>, page='7...
+             │    │   └ <concurrent.futures.thread._WorkItem object at 0x114b9f1f0>
+             │    └ <built-in method run of Context object at 0x114b86cc0>
+             └ <concurrent.futures.thread._WorkItem object at 0x114b9f1f0>
+
+  File "/Users/renchao/Documents/flm_workspace/mid/app/routers/haiguan.py", line 33, in get_haiguans
+    skip = page*pagesize
+           │    └ '50'
+           └ '7'
+
+TypeError: can't multiply sequence by non-int of type 'str'
+2021-03-04 at 15:37:12 | INFO | (500, AttributeError("module 'app.db.models' has no attribute 'Item'"), 'Exception in show_haiguan')
+2021-03-04 at 15:37:12 | ERROR | An error has been caught in function 'run', process 'MainProcess' (13690), thread 'ThreadPoolExecutor-0_0' (123145586950144):
+Traceback (most recent call last):
+
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/threading.py", line 890, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x109e011f0>
+    └ <Thread(ThreadPoolExecutor-0_0, started daemon 123145586950144)>
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+    │    └ <function Thread.run at 0x109dfeee0>
+    └ <Thread(ThreadPoolExecutor-0_0, started daemon 123145586950144)>
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {}
+    │    │        │    │        └ <Thread(ThreadPoolExecutor-0_0, started daemon 123145586950144)>
+    │    │        │    └ (<weakref at 0x118222950; to 'ThreadPoolExecutor' at 0x11820a520>, <_queue.SimpleQueue object at 0x1182a8d10>, None, ())
+    │    │        └ <Thread(ThreadPoolExecutor-0_0, started daemon 123145586950144)>
+    │    └ <function _worker at 0x1181f9f70>
+    └ <Thread(ThreadPoolExecutor-0_0, started daemon 123145586950144)>
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/concurrent/futures/thread.py", line 80, in _worker
+    work_item.run()
+    │         └ <function _WorkItem.run at 0x1182200d0>
+    └ <concurrent.futures.thread._WorkItem object at 0x11820aa00>
+> File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+             │    │   │    │       │    └ {}
+             │    │   │    │       └ <concurrent.futures.thread._WorkItem object at 0x11820aa00>
+             │    │   │    └ [functools.partial(<function get_haiguans at 0x118126430>, db=<sqlalchemy.orm.session.Session object at 0x118227370>, page=1,...
+             │    │   └ <concurrent.futures.thread._WorkItem object at 0x11820aa00>
+             │    └ <built-in method run of Context object at 0x1181c3400>
+             └ <concurrent.futures.thread._WorkItem object at 0x11820aa00>
+
+  File "/Users/renchao/Documents/flm_workspace/mid/app/routers/haiguan.py", line 37, in get_haiguans
+    return formate_response(r[0],r[1],r[2])
+           │                │    │    └ (500, AttributeError("module 'app.db.models' has no attribute 'Item'"), 'Exception in show_haiguan')
+           │                │    └ (500, AttributeError("module 'app.db.models' has no attribute 'Item'"), 'Exception in show_haiguan')
+           │                └ (500, AttributeError("module 'app.db.models' has no attribute 'Item'"), 'Exception in show_haiguan')
+           └ <function formate_response at 0x10b6acee0>
+
+  File "/Users/renchao/Documents/flm_workspace/mid/app/utils/pycode.py", line 8, in formate_response
+    return JSONResponse(
+           └ <class 'starlette.responses.JSONResponse'>
+
+  File "/usr/local/lib/python3.8/site-packages/starlette/responses.py", line 49, in __init__
+    self.body = self.render(content)
+    │           │    │      └ {'code': 500, 'message': 'Exception in show_haiguan', 'data': AttributeError("module 'app.db.models' has no attribute 'Item'")}
+    │           │    └ <function JSONResponse.render at 0x10b117af0>
+    │           └ <starlette.responses.JSONResponse object at 0x11820ad60>
+    └ <starlette.responses.JSONResponse object at 0x11820ad60>
+
+  File "/usr/local/lib/python3.8/site-packages/starlette/responses.py", line 157, in render
+    return json.dumps(
+           │    └ <function dumps at 0x10a366e50>
+           └ <module 'json' from '/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/json/__init__....
+
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/json/__init__.py", line 234, in dumps
+    return cls(
+           └ <class 'json.encoder.JSONEncoder'>
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             │    │          └ {'code': 500, 'message': 'Exception in show_haiguan', 'data': AttributeError("module 'app.db.models' has no attribute 'Item'")}
+             │    └ <function JSONEncoder.iterencode at 0x10a366dc0>
+             └ <json.encoder.JSONEncoder object at 0x1182276d0>
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+           │           └ {'code': 500, 'message': 'Exception in show_haiguan', 'data': AttributeError("module 'app.db.models' has no attribute 'Item'")}
+           └ <_json.Encoder object at 0x11821f100>
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+
+TypeError: Object of type AttributeError is not JSON serializable
+2021-03-04 at 15:38:02 | INFO | (500, AttributeError("module 'app.db.models' has no attribute 'Item'"), 'Exception in show_haiguan')
+2021-03-04 at 15:38:02 | ERROR | An error has been caught in function 'run', process 'MainProcess' (13738), thread 'ThreadPoolExecutor-0_0' (123145345183744):
+Traceback (most recent call last):
+
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/threading.py", line 890, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x1081281f0>
+    └ <Thread(ThreadPoolExecutor-0_0, started daemon 123145345183744)>
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+    │    └ <function Thread.run at 0x108125ee0>
+    └ <Thread(ThreadPoolExecutor-0_0, started daemon 123145345183744)>
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {}
+    │    │        │    │        └ <Thread(ThreadPoolExecutor-0_0, started daemon 123145345183744)>
+    │    │        │    └ (<weakref at 0x11654cb30; to 'ThreadPoolExecutor' at 0x116538e20>, <_queue.SimpleQueue object at 0x1165d0ef0>, None, ())
+    │    │        └ <Thread(ThreadPoolExecutor-0_0, started daemon 123145345183744)>
+    │    └ <function _worker at 0x116521f70>
+    └ <Thread(ThreadPoolExecutor-0_0, started daemon 123145345183744)>
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/concurrent/futures/thread.py", line 80, in _worker
+    work_item.run()
+    │         └ <function _WorkItem.run at 0x1165480d0>
+    └ <concurrent.futures.thread._WorkItem object at 0x116538340>
+> File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+             │    │   │    │       │    └ {}
+             │    │   │    │       └ <concurrent.futures.thread._WorkItem object at 0x116538340>
+             │    │   │    └ [functools.partial(<function get_haiguans at 0x11644e430>, db=<sqlalchemy.orm.session.Session object at 0x116538310>, page=1,...
+             │    │   └ <concurrent.futures.thread._WorkItem object at 0x116538340>
+             │    └ <built-in method run of Context object at 0x1164348c0>
+             └ <concurrent.futures.thread._WorkItem object at 0x116538340>
+
+  File "/Users/renchao/Documents/flm_workspace/mid/app/routers/haiguan.py", line 37, in get_haiguans
+    return formate_response(r[0],r[1],r[2])
+           │                │    │    └ (500, AttributeError("module 'app.db.models' has no attribute 'Item'"), 'Exception in show_haiguan')
+           │                │    └ (500, AttributeError("module 'app.db.models' has no attribute 'Item'"), 'Exception in show_haiguan')
+           │                └ (500, AttributeError("module 'app.db.models' has no attribute 'Item'"), 'Exception in show_haiguan')
+           └ <function formate_response at 0x109ad8ee0>
+
+  File "/Users/renchao/Documents/flm_workspace/mid/app/utils/pycode.py", line 8, in formate_response
+    return JSONResponse(
+           └ <class 'starlette.responses.JSONResponse'>
+
+  File "/usr/local/lib/python3.8/site-packages/starlette/responses.py", line 49, in __init__
+    self.body = self.render(content)
+    │           │    │      └ {'code': 500, 'message': 'Exception in show_haiguan', 'data': AttributeError("module 'app.db.models' has no attribute 'Item'")}
+    │           │    └ <function JSONResponse.render at 0x109543af0>
+    │           └ <starlette.responses.JSONResponse object at 0x116538760>
+    └ <starlette.responses.JSONResponse object at 0x116538760>
+
+  File "/usr/local/lib/python3.8/site-packages/starlette/responses.py", line 157, in render
+    return json.dumps(
+           │    └ <function dumps at 0x1087a1e50>
+           └ <module 'json' from '/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/json/__init__....
+
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/json/__init__.py", line 234, in dumps
+    return cls(
+           └ <class 'json.encoder.JSONEncoder'>
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             │    │          └ {'code': 500, 'message': 'Exception in show_haiguan', 'data': AttributeError("module 'app.db.models' has no attribute 'Item'")}
+             │    └ <function JSONEncoder.iterencode at 0x1087a1dc0>
+             └ <json.encoder.JSONEncoder object at 0x116531c40>
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+           │           └ {'code': 500, 'message': 'Exception in show_haiguan', 'data': AttributeError("module 'app.db.models' has no attribute 'Item'")}
+           └ <_json.Encoder object at 0x1165470a0>
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+
+TypeError: Object of type AttributeError is not JSON serializable
+2021-03-04 at 15:39:21 | INFO | (500, AttributeError("module 'app.db.models' has no attribute 'Item'"), 'Exception in limit_haiguan')
+2021-03-04 at 15:39:21 | ERROR | An error has been caught in function 'run', process 'MainProcess' (13805), thread 'ThreadPoolExecutor-0_0' (123145570861056):
+Traceback (most recent call last):
+
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/threading.py", line 890, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x10e5af1f0>
+    └ <Thread(ThreadPoolExecutor-0_0, started daemon 123145570861056)>
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+    │    └ <function Thread.run at 0x10e5acee0>
+    └ <Thread(ThreadPoolExecutor-0_0, started daemon 123145570861056)>
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {}
+    │    │        │    │        └ <Thread(ThreadPoolExecutor-0_0, started daemon 123145570861056)>
+    │    │        │    └ (<weakref at 0x11c146ae0; to 'ThreadPoolExecutor' at 0x11c130490>, <_queue.SimpleQueue object at 0x11c1c9ea0>, None, ())
+    │    │        └ <Thread(ThreadPoolExecutor-0_0, started daemon 123145570861056)>
+    │    └ <function _worker at 0x11c11df70>
+    └ <Thread(ThreadPoolExecutor-0_0, started daemon 123145570861056)>
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/concurrent/futures/thread.py", line 80, in _worker
+    work_item.run()
+    │         └ <function _WorkItem.run at 0x11c1430d0>
+    └ <concurrent.futures.thread._WorkItem object at 0x11c130970>
+> File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+             │    │   │    │       │    └ {}
+             │    │   │    │       └ <concurrent.futures.thread._WorkItem object at 0x11c130970>
+             │    │   │    └ [functools.partial(<function get_haiguans at 0x11c04a430>, db=<sqlalchemy.orm.session.Session object at 0x11c1402e0>, page=1,...
+             │    │   └ <concurrent.futures.thread._WorkItem object at 0x11c130970>
+             │    └ <built-in method run of Context object at 0x11c12f680>
+             └ <concurrent.futures.thread._WorkItem object at 0x11c130970>
+
+  File "/Users/renchao/Documents/flm_workspace/mid/app/routers/haiguan.py", line 37, in get_haiguans
+    return formate_response(r[0],r[1],r[2])
+           │                │    │    └ (500, AttributeError("module 'app.db.models' has no attribute 'Item'"), 'Exception in limit_haiguan')
+           │                │    └ (500, AttributeError("module 'app.db.models' has no attribute 'Item'"), 'Exception in limit_haiguan')
+           │                └ (500, AttributeError("module 'app.db.models' has no attribute 'Item'"), 'Exception in limit_haiguan')
+           └ <function formate_response at 0x10fe5aee0>
+
+  File "/Users/renchao/Documents/flm_workspace/mid/app/utils/pycode.py", line 8, in formate_response
+    return JSONResponse(
+           └ <class 'starlette.responses.JSONResponse'>
+
+  File "/usr/local/lib/python3.8/site-packages/starlette/responses.py", line 49, in __init__
+    self.body = self.render(content)
+    │           │    │      └ {'code': 500, 'message': 'Exception in limit_haiguan', 'data': AttributeError("module 'app.db.models' has no attribute 'Item'")}
+    │           │    └ <function JSONResponse.render at 0x10f8c5af0>
+    │           └ <starlette.responses.JSONResponse object at 0x11c1303d0>
+    └ <starlette.responses.JSONResponse object at 0x11c1303d0>
+
+  File "/usr/local/lib/python3.8/site-packages/starlette/responses.py", line 157, in render
+    return json.dumps(
+           │    └ <function dumps at 0x10eb14e50>
+           └ <module 'json' from '/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/json/__init__....
+
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/json/__init__.py", line 234, in dumps
+    return cls(
+           └ <class 'json.encoder.JSONEncoder'>
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             │    │          └ {'code': 500, 'message': 'Exception in limit_haiguan', 'data': AttributeError("module 'app.db.models' has no attribute 'Item'")}
+             │    └ <function JSONEncoder.iterencode at 0x10eb14dc0>
+             └ <json.encoder.JSONEncoder object at 0x11c140640>
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+           │           └ {'code': 500, 'message': 'Exception in limit_haiguan', 'data': AttributeError("module 'app.db.models' has no attribute 'Item'")}
+           └ <_json.Encoder object at 0x11c141100>
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+
+TypeError: Object of type AttributeError is not JSON serializable
+2021-03-04 at 15:39:54 | INFO | (500, AttributeError("'list' object has no attribute 'to_dict'"), 'Exception in limit_haiguan')
+2021-03-04 at 15:39:54 | ERROR | An error has been caught in function 'run', process 'MainProcess' (13847), thread 'ThreadPoolExecutor-0_0' (123145338650624):
+Traceback (most recent call last):
+
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/threading.py", line 890, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x10a0b91f0>
+    └ <Thread(ThreadPoolExecutor-0_0, started daemon 123145338650624)>
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+    │    └ <function Thread.run at 0x10a0b6ee0>
+    └ <Thread(ThreadPoolExecutor-0_0, started daemon 123145338650624)>
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {}
+    │    │        │    │        └ <Thread(ThreadPoolExecutor-0_0, started daemon 123145338650624)>
+    │    │        │    └ (<weakref at 0x1184dcae0; to 'ThreadPoolExecutor' at 0x1184c8d30>, <_queue.SimpleQueue object at 0x11855fea0>, None, ())
+    │    │        └ <Thread(ThreadPoolExecutor-0_0, started daemon 123145338650624)>
+    │    └ <function _worker at 0x1184b4f70>
+    └ <Thread(ThreadPoolExecutor-0_0, started daemon 123145338650624)>
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/concurrent/futures/thread.py", line 80, in _worker
+    work_item.run()
+    │         └ <function _WorkItem.run at 0x1184d70d0>
+    └ <concurrent.futures.thread._WorkItem object at 0x1184c8190>
+> File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+             │    │   │    │       │    └ {}
+             │    │   │    │       └ <concurrent.futures.thread._WorkItem object at 0x1184c8190>
+             │    │   │    └ [functools.partial(<function get_haiguans at 0x1183d8430>, db=<sqlalchemy.orm.session.Session object at 0x1184c8220>, page=1,...
+             │    │   └ <concurrent.futures.thread._WorkItem object at 0x1184c8190>
+             │    └ <built-in method run of Context object at 0x116e4e640>
+             └ <concurrent.futures.thread._WorkItem object at 0x1184c8190>
+
+  File "/Users/renchao/Documents/flm_workspace/mid/app/routers/haiguan.py", line 37, in get_haiguans
+    return formate_response(r[0],r[1],r[2])
+           │                │    │    └ (500, AttributeError("'list' object has no attribute 'to_dict'"), 'Exception in limit_haiguan')
+           │                │    └ (500, AttributeError("'list' object has no attribute 'to_dict'"), 'Exception in limit_haiguan')
+           │                └ (500, AttributeError("'list' object has no attribute 'to_dict'"), 'Exception in limit_haiguan')
+           └ <function formate_response at 0x10b964ee0>
+
+  File "/Users/renchao/Documents/flm_workspace/mid/app/utils/pycode.py", line 8, in formate_response
+    return JSONResponse(
+           └ <class 'starlette.responses.JSONResponse'>
+
+  File "/usr/local/lib/python3.8/site-packages/starlette/responses.py", line 49, in __init__
+    self.body = self.render(content)
+    │           │    │      └ {'code': 500, 'message': 'Exception in limit_haiguan', 'data': AttributeError("'list' object has no attribute 'to_dict'")}
+    │           │    └ <function JSONResponse.render at 0x10b3cfaf0>
+    │           └ <starlette.responses.JSONResponse object at 0x1184c1f40>
+    └ <starlette.responses.JSONResponse object at 0x1184c1f40>
+
+  File "/usr/local/lib/python3.8/site-packages/starlette/responses.py", line 157, in render
+    return json.dumps(
+           │    └ <function dumps at 0x10a61ee50>
+           └ <module 'json' from '/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/json/__init__....
+
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/json/__init__.py", line 234, in dumps
+    return cls(
+           └ <class 'json.encoder.JSONEncoder'>
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             │    │          └ {'code': 500, 'message': 'Exception in limit_haiguan', 'data': AttributeError("'list' object has no attribute 'to_dict'")}
+             │    └ <function JSONEncoder.iterencode at 0x10a61edc0>
+             └ <json.encoder.JSONEncoder object at 0x1184c80d0>
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+           │           └ {'code': 500, 'message': 'Exception in limit_haiguan', 'data': AttributeError("'list' object has no attribute 'to_dict'")}
+           └ <_json.Encoder object at 0x11859bb80>
+  File "/usr/local/Cellar/python@3.8/3.8.4/Frameworks/Python.framework/Versions/3.8/lib/python3.8/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+
+TypeError: Object of type AttributeError is not JSON serializable
+2021-03-04 at 15:40:52 | INFO | (200, [{'id': 574437, 'product_id': '01029090', 'product_name': '其他牛,改良种用除外', 'trade_country_id': 110, 'trade_country_name': '中国香港', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 13, 'register_name': '河北省', 'first_unit': '千克', 'first_price': 308560, 'second_unit': '头', 'second_price': 474, 'price': 1515928, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574438, 'product_id': '01029090', 'product_name': '其他牛,改良种用除外', 'trade_country_id': 110, 'trade_country_name': '中国香港', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 15, 'register_name': '内蒙古自治区', 'first_unit': '千克', 'first_price': 1881680, 'second_unit': '头', 'second_price': 2886, 'price': 9387962, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574439, 'product_id': '01029090', 'product_name': '其他牛,改良种用除外', 'trade_country_id': 110, 'trade_country_name': '中国香港', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 32, 'register_name': '江苏省', 'first_unit': '千克', 'first_price': 1685010, 'second_unit': '头', 'second_price': 2965, 'price': 11269301, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574440, 'product_id': '01029090', 'product_name': '其他牛,改良种用除外', 'trade_country_id': 110, 'trade_country_name': '中国香港', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 34, 'register_name': '安徽省', 'first_unit': '千克', 'first_price': 1102950, 'second_unit': '头', 'second_price': 1735, 'price': 5990012, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574441, 'product_id': '01029090', 'product_name': '其他牛,改良种用除外', 'trade_country_id': 110, 'trade_country_name': '中国香港', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 41, 'register_name': '河南省', 'first_unit': '千克', 'first_price': 231561, 'second_unit': '头', 'second_price': 370, 'price': 1190441, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574442, 'product_id': '01029090', 'product_name': '其他牛,改良种用除外', 'trade_country_id': 110, 'trade_country_name': '中国香港', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 42, 'register_name': '湖北省', 'first_unit': '千克', 'first_price': 574430, 'second_unit': '头', 'second_price': 839, 'price': 2542435, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574443, 'product_id': '01029090', 'product_name': '其他牛,改良种用除外', 'trade_country_id': 110, 'trade_country_name': '中国香港', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 44, 'register_name': '广东省', 'first_unit': '千克', 'first_price': 474150, 'second_unit': '头', 'second_price': 858, 'price': 3193454, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574444, 'product_id': '01029090', 'product_name': '其他牛,改良种用除外', 'trade_country_id': 110, 'trade_country_name': '中国香港', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 52, 'register_name': '贵州省', 'first_unit': '千克', 'first_price': 227250, 'second_unit': '头', 'second_price': 345, 'price': 1262735, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574445, 'product_id': '01029090', 'product_name': '其他牛,改良种用除外', 'trade_country_id': 110, 'trade_country_name': '中国香港', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 61, 'register_name': '陕西省', 'first_unit': '千克', 'first_price': 241360, 'second_unit': '头', 'second_price': 430, 'price': 1419024, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574446, 'product_id': '01029090', 'product_name': '其他牛,改良种用除外', 'trade_country_id': 110, 'trade_country_name': '中国香港', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 62, 'register_name': '甘肃省', 'first_unit': '千克', 'first_price': 237885, 'second_unit': '头', 'second_price': 416, 'price': 1357406, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574447, 'product_id': '01029090', 'product_name': '其他牛,改良种用除外', 'trade_country_id': 110, 'trade_country_name': '中国香港', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 64, 'register_name': '宁夏回族自治区', 'first_unit': '千克', 'first_price': 285383, 'second_unit': '头', 'second_price': 480, 'price': 1551423, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574448, 'product_id': '01029090', 'product_name': '其他牛,改良种用除外', 'trade_country_id': 121, 'trade_country_name': '中国澳门', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 13, 'register_name': '河北省', 'first_unit': '千克', 'first_price': 233480, 'second_unit': '头', 'second_price': 296, 'price': 1144436, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574449, 'product_id': '01029090', 'product_name': '其他牛,改良种用除外', 'trade_country_id': 121, 'trade_country_name': '中国澳门', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 15, 'register_name': '内蒙古自治区', 'first_unit': '千克', 'first_price': 237095, 'second_unit': '头', 'second_price': 355, 'price': 1303555, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574450, 'product_id': '01029090', 'product_name': '其他牛,改良种用除外', 'trade_country_id': 121, 'trade_country_name': '中国澳门', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 44, 'register_name': '广东省', 'first_unit': '千克', 'first_price': 731445, 'second_unit': '头', 'second_price': 995, 'price': 4049221, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574451, 'product_id': '01029090', 'product_name': '其他牛,改良种用除外', 'trade_country_id': 121, 'trade_country_name': '中国澳门', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 61, 'register_name': '陕西省', 'first_unit': '千克', 'first_price': 11100, 'second_unit': '头', 'second_price': 14, 'price': 48288, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574452, 'product_id': '01029090', 'product_name': '无数据', 'trade_country_id': 0, 'trade_country_name': '无数据', 'trade_id': 0, 'trade_name': '无数据', 'register_id': 0, 'register_name': '无数据', 'first_unit': '无数据', 'first_price': 0, 'second_unit': '无数据', 'second_price': 0, 'price': 0, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 0, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574453, 'product_id': '01031000', 'product_name': '无数据', 'trade_country_id': 0, 'trade_country_name': '无数据', 'trade_id': 0, 'trade_name': '无数据', 'register_id': 0, 'register_name': '无数据', 'first_unit': '无数据', 'first_price': 0, 'second_unit': '无数据', 'second_price': 0, 'price': 0, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574454, 'product_id': '01031000', 'product_name': '改良种用猪', 'trade_country_id': 302, 'trade_country_name': '丹麦', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 11, 'register_name': '北京市', 'first_unit': '千克', 'first_price': 544090, 'second_unit': '头', 'second_price': 11343, 'price': 28344937, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 0, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574455, 'product_id': '01031000', 'product_name': '改良种用猪', 'trade_country_id': 303, 'trade_country_name': '英国', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 11, 'register_name': '北京市', 'first_unit': '千克', 'first_price': 72000, 'second_unit': '头', 'second_price': 1600, 'price': 3786000, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 0, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574456, 'product_id': '01031000', 'product_name': '改良种用猪', 'trade_country_id': 305, 'trade_country_name': '法国', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 11, 'register_name': '北京市', 'first_unit': '千克', 'first_price': 641651, 'second_unit': '头', 'second_price': 13015, 'price': 25817957, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 0, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574457, 'product_id': '01031000', 'product_name': '改良种用猪', 'trade_country_id': 502, 'trade_country_name': '美国', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 11, 'register_name': '北京市', 'first_unit': '千克', 'first_price': 90770, 'second_unit': '头', 'second_price': 1292, 'price': 4788208, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 0, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574458, 'product_id': '01031000', 'product_name': '改良种用猪', 'trade_country_id': 502, 'trade_country_name': '美国', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 52, 'register_name': '贵州省', 'first_unit': '千克', 'first_price': 134280, 'second_unit': '头', 'second_price': 1792, 'price': 3778687, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 0, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574459, 'product_id': '01039110', 'product_name': '无数据', 'trade_country_id': 0, 'trade_country_name': '无数据', 'trade_id': 0, 'trade_name': '无数据', 'register_id': 0, 'register_name': '无数据', 'first_unit': '无数据', 'first_price': 0, 'second_unit': '无数据', 'second_price': 0, 'price': 0, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574460, 'product_id': '01039110', 'product_name': '无数据', 'trade_country_id': 0, 'trade_country_name': '无数据', 'trade_id': 0, 'trade_name': '无数据', 'register_id': 0, 'register_name': '无数据', 'first_unit': '无数据', 'first_price': 0, 'second_unit': '无数据', 'second_price': 0, 'price': 0, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 0, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574461, 'product_id': '01039120', 'product_name': '无数据', 'trade_country_id': 0, 'trade_country_name': '无数据', 'trade_id': 0, 'trade_name': '无数据', 'register_id': 0, 'register_name': '无数据', 'first_unit': '无数据', 'first_price': 0, 'second_unit': '无数据', 'second_price': 0, 'price': 0, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574462, 'product_id': '01039120', 'product_name': '无数据', 'trade_country_id': 0, 'trade_country_name': '无数据', 'trade_id': 0, 'trade_name': '无数据', 'register_id': 0, 'register_name': '无数据', 'first_unit': '无数据', 'first_price': 0, 'second_unit': '无数据', 'second_price': 0, 'price': 0, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 0, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574463, 'product_id': '01039200', 'product_name': '其他猪,重量≥50kg,改良种用除外', 'trade_country_id': 110, 'trade_country_name': '中国香港', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 31, 'register_name': '上海市', 'first_unit': '千克', 'first_price': 1459800, 'second_unit': '头', 'second_price': 12904, 'price': 10174000, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574464, 'product_id': '01039200', 'product_name': '其他猪,重量≥50kg,改良种用除外', 'trade_country_id': 110, 'trade_country_name': '中国香港', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 33, 'register_name': '浙江省', 'first_unit': '千克', 'first_price': 11365830, 'second_unit': '头', 'second_price': 97586, 'price': 78411763, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574465, 'product_id': '01039200', 'product_name': '其他猪,重量≥50kg,改良种用除外', 'trade_country_id': 110, 'trade_country_name': '中国香港', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 36, 'register_name': '江西省', 'first_unit': '千克', 'first_price': 8333850, 'second_unit': '头', 'second_price': 68621, 'price': 53567248, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574466, 'product_id': '01039200', 'product_name': '其他猪,重量≥50kg,改良种用除外', 'trade_country_id': 110, 'trade_country_name': '中国香港', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 41, 'register_name': '河南省', 'first_unit': '千克', 'first_price': 888200, 'second_unit': '头', 'second_price': 7356, 'price': 5283516, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574467, 'product_id': '01039200', 'product_name': '其他猪,重量≥50kg,改良种用除外', 'trade_country_id': 110, 'trade_country_name': '中国香港', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 42, 'register_name': '湖北省', 'first_unit': '千克', 'first_price': 5429710, 'second_unit': '头', 'second_price': 45920, 'price': 32886594, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574468, 'product_id': '01039200', 'product_name': '其他猪,重量≥50kg,改良种用除外', 'trade_country_id': 110, 'trade_country_name': '中国香港', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 43, 'register_name': '湖南省', 'first_unit': '千克', 'first_price': 3025655, 'second_unit': '头', 'second_price': 24947, 'price': 18746834, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574469, 'product_id': '01039200', 'product_name': '其他猪,重量≥50kg,改良种用除外', 'trade_country_id': 110, 'trade_country_name': '中国香港', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 44, 'register_name': '广东省', 'first_unit': '千克', 'first_price': 39805265, 'second_unit': '头', 'second_price': 357056, 'price': 256674779, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574470, 'product_id': '01039200', 'product_name': '其他猪,重量≥50kg,改良种用除外', 'trade_country_id': 110, 'trade_country_name': '中国香港', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 45, 'register_name': '广西壮族自治区', 'first_unit': '千克', 'first_price': 2838470, 'second_unit': '头', 'second_price': 24088, 'price': 15525998, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574471, 'product_id': '01039200', 'product_name': '其他猪,重量≥50kg,改良种用除外', 'trade_country_id': 121, 'trade_country_name': '中国澳门', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 36, 'register_name': '江西省', 'first_unit': '千克', 'first_price': 79200, 'second_unit': '头', 'second_price': 792, 'price': 510900, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574472, 'product_id': '01039200', 'product_name': '其他猪,重量≥50kg,改良种用除外', 'trade_country_id': 121, 'trade_country_name': '中国澳门', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 43, 'register_name': '湖南省', 'first_unit': '千克', 'first_price': 1119000, 'second_unit': '头', 'second_price': 11190, 'price': 8316948, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574473, 'product_id': '01039200', 'product_name': '其他猪,重量≥50kg,改良种用除外', 'trade_country_id': 121, 'trade_country_name': '中国澳门', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 44, 'register_name': '广东省', 'first_unit': '千克', 'first_price': 7002538, 'second_unit': '头', 'second_price': 67527, 'price': 41008968, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574474, 'product_id': '01039200', 'product_name': '其他猪,重量≥50kg,改良种用除外', 'trade_country_id': 121, 'trade_country_name': '中国澳门', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 45, 'register_name': '广西壮族自治区', 'first_unit': '千克', 'first_price': 19500, 'second_unit': '头', 'second_price': 195, 'price': 125787, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574475, 'product_id': '01039200', 'product_name': '无数据', 'trade_country_id': 0, 'trade_country_name': '无数据', 'trade_id': 0, 'trade_name': '无数据', 'register_id': 0, 'register_name': '无数据', 'first_unit': '无数据', 'first_price': 0, 'second_unit': '无数据', 'second_price': 0, 'price': 0, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 0, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574476, 'product_id': '01041010', 'product_name': '无数据', 'trade_country_id': 0, 'trade_country_name': '无数据', 'trade_id': 0, 'trade_name': '无数据', 'register_id': 0, 'register_name': '无数据', 'first_unit': '无数据', 'first_price': 0, 'second_unit': '无数据', 'second_price': 0, 'price': 0, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574477, 'product_id': '01041010', 'product_name': '改良种用绵羊', 'trade_country_id': 601, 'trade_country_name': '澳大利亚', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 11, 'register_name': '北京市', 'first_unit': '千克', 'first_price': 6780, 'second_unit': '头', 'second_price': 226, 'price': 267240, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 0, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574478, 'product_id': '01041010', 'product_name': '改良种用绵羊', 'trade_country_id': 601, 'trade_country_name': '澳大利亚', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 37, 'register_name': '山东省', 'first_unit': '千克', 'first_price': 1675, 'second_unit': '头', 'second_price': 65, 'price': 125743, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 0, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574479, 'product_id': '01041090', 'product_name': '无数据', 'trade_country_id': 0, 'trade_country_name': '无数据', 'trade_id': 0, 'trade_name': '无数据', 'register_id': 0, 'register_name': '无数据', 'first_unit': '无数据', 'first_price': 0, 'second_unit': '无数据', 'second_price': 0, 'price': 0, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574480, 'product_id': '01041090', 'product_name': '其他绵羊,改良种用除外', 'trade_country_id': 124, 'trade_country_name': '蒙古', 'trade_id': 11, 'trade_name': '国家间、国际组织无偿援助和赠送的...', 'register_id': 11, 'register_name': '北京市', 'first_unit': '千克', 'first_price': 1329240, 'second_unit': '头', 'second_price': 29807, 'price': 2649268, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 0, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574481, 'product_id': '01041090', 'product_name': '其他绵羊,改良种用除外', 'trade_country_id': 601, 'trade_country_name': '澳大利亚', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 37, 'register_name': '山东省', 'first_unit': '千克', 'first_price': 8115, 'second_unit': '头', 'second_price': 319, 'price': 314530, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 0, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574482, 'product_id': '01042010', 'product_name': '无数据', 'trade_country_id': 0, 'trade_country_name': '无数据', 'trade_id': 0, 'trade_name': '无数据', 'register_id': 0, 'register_name': '无数据', 'first_unit': '无数据', 'first_price': 0, 'second_unit': '无数据', 'second_price': 0, 'price': 0, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574483, 'product_id': '01042010', 'product_name': '改良种用山羊', 'trade_country_id': 601, 'trade_country_name': '澳大利亚', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 11, 'register_name': '北京市', 'first_unit': '千克', 'first_price': 15300, 'second_unit': '头', 'second_price': 560, 'price': 780195, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 0, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574484, 'product_id': '01042010', 'product_name': '改良种用山羊', 'trade_country_id': 601, 'trade_country_name': '澳大利亚', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 37, 'register_name': '山东省', 'first_unit': '千克', 'first_price': 78860, 'second_unit': '头', 'second_price': 3083, 'price': 4369960, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 0, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574485, 'product_id': '01042010', 'product_name': '改良种用山羊', 'trade_country_id': 609, 'trade_country_name': '新西兰', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 37, 'register_name': '山东省', 'first_unit': '千克', 'first_price': 152577, 'second_unit': '头', 'second_price': 5523, 'price': 7712785, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 0, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}, {'id': 574486, 'product_id': '01042090', 'product_name': '其他山羊,改良种用除外', 'trade_country_id': 110, 'trade_country_name': '中国香港', 'trade_id': 10, 'trade_name': '一般贸易', 'register_id': 44, 'register_name': '广东省', 'first_unit': '千克', 'first_price': 46240, 'second_unit': '头', 'second_price': 1429, 'price': 380908, 'year': 2020, 'start_month': 1, 'end_month': 12, 'import_type': 1, 'code_type': 1, 'month_type': 1, 'create_time': '2021-03-04 12:44:42'}], '')
