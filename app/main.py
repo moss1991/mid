@@ -39,7 +39,7 @@ app.add_middleware(
 
 app.include_router(
     web.router,
-    prefix="/web",
+    prefix="/api/web",
     tags=["web"],
     # dependencies=[Depends(corpauth.get_token_header)],
     responses={404: {"description": "Not found"}},
@@ -47,7 +47,7 @@ app.include_router(
 
 app.include_router(
     stock.router,
-    prefix="/stock",
+    prefix="/api/stock",
     tags=["stock"],
     # dependencies=[Depends(corpauth.get_token_header)],
     responses={404: {"description": "Not found"}},
@@ -55,7 +55,7 @@ app.include_router(
 
 app.include_router(
     futures.router,
-    prefix="/futures",
+    prefix="/api/futures",
     tags=["futures"],
     # dependencies=[Depends(corpauth.get_token_header)],
     responses={404: {"description": "Not found"}},
@@ -63,7 +63,7 @@ app.include_router(
 
 app.include_router(
     haiguan.router,
-    prefix="/haiguan",
+    prefix="/api/haiguan",
     tags=["haiguan"],
     # dependencies=[Depends(corpauth.get_token_header)],
     responses={404: {"description": "Not found"}},
@@ -71,7 +71,7 @@ app.include_router(
 
 app.include_router(
     econ.router,
-    prefix="/econ",
+    prefix="/api/econ",
     tags=["econ"],
     # dependencies=[Depends(corpauth.get_token_header)],
     responses={404: {"description": "Not found"}},

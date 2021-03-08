@@ -40,4 +40,21 @@ def limit_haiguan(db: Session, skip:int =0 ,limit:int = 100):
         msg = "Exception in limit_haiguan"
         mdata = e
     return code,mdata,msg
-    
+
+def all_haiguan(db: Session):
+    code = 200
+    msg  = ""
+    mdata = None
+
+    try:
+        many =  db.query(models.HaiguanItem).all()
+        # for one in many:
+        #     mdata.append(
+        #         one.to_dict()
+        #     )
+        mdata = len(many)
+    except Exception as e:
+        code = 500
+        msg = "Exception in all_haiguan"
+        mdata = e
+    return code,mdata,msg
