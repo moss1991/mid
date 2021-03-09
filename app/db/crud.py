@@ -30,7 +30,7 @@ def limit_haiguan(db: Session, skip:int =0 ,limit:int = 100):
     mdata = []
 
     try:
-        many =  db.query(models.HaiguanItem).offset(skip).limit(limit).all()
+        many =  db.query(models.HaiguanItem).filter(models.HaiguanItem.product_name != '无数据').offset(skip).limit(limit).all()
         for one in many:
             mdata.append(
                 one.to_dict()
@@ -47,7 +47,7 @@ def all_haiguan(db: Session):
     mdata = None
 
     try:
-        many =  db.query(models.HaiguanItem).all()
+        many =  db.query(models.HaiguanItem).filter(models.HaiguanItem.product_name != '无数据').all()
         # for one in many:
         #     mdata.append(
         #         one.to_dict()
